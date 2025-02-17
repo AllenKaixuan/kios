@@ -207,13 +207,22 @@ def behavior_tree_generate_step(state: PlanExecuteState):
         }
     )
 
-    render_bt(bt_skeleton)
+    # 保存行为树到日志文件
+    log_dir = os.path.join(current_dir, "logs")
+    os.makedirs(log_dir, exist_ok=True)
+    log_file = os.path.join(log_dir, f"behavior_tree_{time_stamp}.json")
+    with open(log_file, "w") as f:
+        json.dump(bt_skeleton, f, indent=2)
+    kios_logger.info(f"Behavior tree saved to {log_file}")
+
+    render_bt(bt_skeleton)  # 绘制树
 
     kios_logger.info(
         f"What should I do to improve the behavior tree? Please give me your hint:"
     )
 
     user_feedback = input()
+    
 
     return {
         "last_behavior_tree": bt_skeleton,
@@ -228,10 +237,27 @@ def behavior_tree_execute_step(state: PlanExecuteState):
     """
     lg_logger.info(f"-----behavior_tree_execute_step-----")
     # * simulation shortcut. Uncomment the following line to use simulation instead of execution
-    return behavior_tree_simulation_step(state)
+    #return behavior_tree_simulation_step(state)
     this_step = state["plan"][0]
     behavior_tree_skeleton = state["last_behavior_tree"]
     latest_world_state = state["world_state"][-1]
+
+    # 保存执行前的行为树和当前步骤到日志文件
+    log_dir = os.path.join(current_dir, "logs")
+    os.makedirs(log_dir, exist_ok=True)
+    
+    # 保存行为树
+    bt_log_file = os.path.join(log_dir, f"bt_before_execute_{time_stamp}.json")
+    with open(bt_log_file, "w") as f:
+        json.dump(behavior_tree_skeleton, f, indent=2)
+    kios_logger.info(f"Behavior tree before execution saved to {bt_log_file}")
+    
+    # 保存当前步骤
+    step_log_file = os.path.join(log_dir, f"current_step_{time_stamp}.txt")
+    with open(step_log_file, "w") as f:
+        f.write(f"Current step: {this_step}\n")
+        f.write(f"Full plan: {state['plan']}")
+    kios_logger.info(f"Current step info saved to {step_log_file}")
 
     global behavior_tree_stewardship
 
@@ -241,6 +267,16 @@ def behavior_tree_execute_step(state: PlanExecuteState):
         scene_json_object=scene_json_object,
         is_simulation=False,
     )
+    
+    # 保存执行后的结果
+    result_log_file = os.path.join(log_dir, f"bt_execution_result_{time_stamp}.json")
+    with open(result_log_file, "w") as f:
+        json.dump({
+            "result": tree_result.result,
+            "world_state": tree_result.world_state,
+            "summary": tree_result.summary if hasattr(tree_result, "summary") else None
+        }, f, indent=2)
+    kios_logger.info(f"Execution result saved to {result_log_file}")
 
     # behavior_tree_stewardship.set_world_state(latest_world_state)
 

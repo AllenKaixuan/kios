@@ -202,7 +202,7 @@ def behavior_tree_execute_step(state: PlanExecuteState):
     """
     print(f"-----behavior_tree_execute_step-----")
     # # * simulation shortcut. Uncomment the following line to use simulation instead of execution
-    # return behavior_tree_simulation_step(state)
+    return behavior_tree_simulation_step(state)
     global behavior_tree_stewardship
 
     this_step = "execute the first step of the plan"

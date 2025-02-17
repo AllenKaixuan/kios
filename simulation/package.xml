@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>kios_bt_planning</name>
+  <version>0.0.1</version>
+  <description>KIOS BT Planning Package</description>
+  
+  <maintainer email="your@email.com">Your Name</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+  
+  <depend>rclpy</depend>
+  <depend>moveit_msgs</depend>
+  <depend>moveit_commander</depend>
+  <depend>control_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>gazebo_ros</depend>
+  <depend>robot_state_publisher</depend>
+  
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package> 

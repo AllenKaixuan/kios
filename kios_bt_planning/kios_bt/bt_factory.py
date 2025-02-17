@@ -185,9 +185,37 @@ class BehaviorTreeFactory:
     def from_json_to_behavior_tree(
         self, json_data: dict
     ) -> Tuple[Dict[str, Any], py_trees.trees.BehaviourTree]:
+        """
+        generate a behavior tree from a json file
+        """
+        # # 保存输入的JSON数据到日志
+        # import os
+        # import json
+        # import datetime
+        
+        # # 获取当前时间戳
+        # time_stamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        
+        # # 修改日志保存位置到项目根目录的logs文件夹
+        # current_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        # log_dir = os.path.join(current_dir, "logs")
+        # os.makedirs(log_dir, exist_ok=True)
+        
+        # # 保存输入的行为树JSON
+        # input_bt_file = os.path.join(log_dir, f"bt_input_{time_stamp}.json")
+        # with open(input_bt_file, "w") as f:
+        #     json.dump(json_data, f, indent=2)
 
+        # # 生成行为树
         tree_root = self.from_json_to_tree_root(json_data)
         behavior_tree = py_trees.trees.BehaviourTree(tree_root)
+        
+        # # 保存生成的行为树结构
+        # bt_structure = behavior_tree.root.generate_dot_graph()
+        # structure_file = os.path.join(log_dir, f"bt_structure_{time_stamp}.dot")
+        # with open(structure_file, "w") as f:
+        #     f.write(bt_structure)
+        
         return [self.roster, behavior_tree]
 
     # * json to bt
