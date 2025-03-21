@@ -4,90 +4,30 @@ graph [fontname="times-roman"];
 node [fontname="times-roman"];
 edge [fontname="times-roman"];
 "selector:
- insert(left_hand, clampgripper, gear3, shaft3)" [fillcolor=cyan, fontcolor=black, fontsize=9, label="selector:
- insert(left_hand, clampgripper, gear3, shaft3)", shape=octagon, style=filled];
+ move_to(robot_arm, point_A)" [fillcolor=cyan, fontcolor=black, fontsize=9, label="selector:
+ move_to(robot_arm, point_A)", shape=octagon, style=filled];
 "target:
- is_inserted_to(gear3, shaft3)" [fillcolor=gray, fontcolor=black, fontsize=9, label="target:
- is_inserted_to(gear3, shaft3)", shape=ellipse, style=filled];
+ at(robot_arm, point_A)" [fillcolor=gray, fontcolor=black, fontsize=9, label="target:
+ at(robot_arm, point_A)", shape=ellipse, style=filled];
 "selector:
- insert(left_hand, clampgripper, gear3, shaft3)" -> "target:
- is_inserted_to(gear3, shaft3)";
+ move_to(robot_arm, point_A)" -> "target:
+ at(robot_arm, point_A)";
 "sequence:
- insert(left_hand, clampgripper, gear3, shaft3)" [fillcolor=orange, fontcolor=black, fontsize=9, label="sequence:
- insert(left_hand, clampgripper, gear3, shaft3)", shape=box, style=filled];
+ move_to(robot_arm, point_A)" [fillcolor=orange, fontcolor=black, fontsize=9, label="sequence:
+ move_to(robot_arm, point_A)", shape=box, style=filled];
 "selector:
- insert(left_hand, clampgripper, gear3, shaft3)" -> "sequence:
- insert(left_hand, clampgripper, gear3, shaft3)";
-"selector:
- pick_up(left_hand, clampgripper, gear3)" [fillcolor=cyan, fontcolor=black, fontsize=9, label="selector:
- pick_up(left_hand, clampgripper, gear3)", shape=octagon, style=filled];
-"sequence:
- insert(left_hand, clampgripper, gear3, shaft3)" -> "selector:
- pick_up(left_hand, clampgripper, gear3)";
-"target:
- hold(clampgripper, gear3)" [fillcolor=gray, fontcolor=black, fontsize=9, label="target:
- hold(clampgripper, gear3)", shape=ellipse, style=filled];
-"selector:
- pick_up(left_hand, clampgripper, gear3)" -> "target:
- hold(clampgripper, gear3)";
-"sequence:
- pick_up(left_hand, clampgripper, gear3)" [fillcolor=orange, fontcolor=black, fontsize=9, label="sequence:
- pick_up(left_hand, clampgripper, gear3)", shape=box, style=filled];
-"selector:
- pick_up(left_hand, clampgripper, gear3)" -> "sequence:
- pick_up(left_hand, clampgripper, gear3)";
-"selector:
- change_tool(left_hand, defaultgripper, clampgripper)" [fillcolor=cyan, fontcolor=black, fontsize=9, label="selector:
- change_tool(left_hand, defaultgripper, clampgripper)", shape=octagon, style=filled];
-"sequence:
- pick_up(left_hand, clampgripper, gear3)" -> "selector:
- change_tool(left_hand, defaultgripper, clampgripper)";
-"target:
- hold(left_hand, clampgripper)" [fillcolor=gray, fontcolor=black, fontsize=9, label="target:
- hold(left_hand, clampgripper)", shape=ellipse, style=filled];
-"selector:
- change_tool(left_hand, defaultgripper, clampgripper)" -> "target:
- hold(left_hand, clampgripper)";
-"sequence:
- change_tool(left_hand, defaultgripper, clampgripper)" [fillcolor=orange, fontcolor=black, fontsize=9, label="sequence:
- change_tool(left_hand, defaultgripper, clampgripper)", shape=box, style=filled];
-"selector:
- change_tool(left_hand, defaultgripper, clampgripper)" -> "sequence:
- change_tool(left_hand, defaultgripper, clampgripper)";
+ move_to(robot_arm, point_A)" -> "sequence:
+ move_to(robot_arm, point_A)";
 "precondition:
- hold(left_hand, defaultgripper)" [fillcolor=gray, fontcolor=black, fontsize=9, label="precondition:
- hold(left_hand, defaultgripper)", shape=ellipse, style=filled];
+ can_move_to(robot_arm, point_A)" [fillcolor=gray, fontcolor=black, fontsize=9, label="precondition:
+ can_move_to(robot_arm, point_A)", shape=ellipse, style=filled];
 "sequence:
- change_tool(left_hand, defaultgripper, clampgripper)" -> "precondition:
- hold(left_hand, defaultgripper)";
-"precondition:
- is_empty(defaultgripper)" [fillcolor=gray, fontcolor=black, fontsize=9, label="precondition:
- is_empty(defaultgripper)", shape=ellipse, style=filled];
-"sequence:
- change_tool(left_hand, defaultgripper, clampgripper)" -> "precondition:
- is_empty(defaultgripper)";
+ move_to(robot_arm, point_A)" -> "precondition:
+ can_move_to(robot_arm, point_A)";
 "action:
- change_tool(left_hand, defaultgripper, clampgripper)" [fillcolor=gray, fontcolor=black, fontsize=9, label="action:
- change_tool(left_hand, defaultgripper, clampgripper)", shape=ellipse, style=filled];
+ move_to(robot_arm, point_A)" [fillcolor=gray, fontcolor=black, fontsize=9, label="action:
+ move_to(robot_arm, point_A)", shape=ellipse, style=filled];
 "sequence:
- change_tool(left_hand, defaultgripper, clampgripper)" -> "action:
- change_tool(left_hand, defaultgripper, clampgripper)";
-"precondition:
- is_empty(clampgripper)" [fillcolor=gray, fontcolor=black, fontsize=9, label="precondition:
- is_empty(clampgripper)", shape=ellipse, style=filled];
-"sequence:
- pick_up(left_hand, clampgripper, gear3)" -> "precondition:
- is_empty(clampgripper)";
-"action:
- pick_up(left_hand, clampgripper, gear3)" [fillcolor=gray, fontcolor=black, fontsize=9, label="action:
- pick_up(left_hand, clampgripper, gear3)", shape=ellipse, style=filled];
-"sequence:
- pick_up(left_hand, clampgripper, gear3)" -> "action:
- pick_up(left_hand, clampgripper, gear3)";
-"action:
- insert(left_hand, clampgripper, gear3, shaft3)" [fillcolor=gray, fontcolor=black, fontsize=9, label="action:
- insert(left_hand, clampgripper, gear3, shaft3)", shape=ellipse, style=filled];
-"sequence:
- insert(left_hand, clampgripper, gear3, shaft3)" -> "action:
- insert(left_hand, clampgripper, gear3, shaft3)";
+ move_to(robot_arm, point_A)" -> "action:
+ move_to(robot_arm, point_A)";
 }

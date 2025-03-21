@@ -6,9 +6,11 @@ import operator
 from dotenv import load_dotenv
 import datetime
 
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
-os.environ["LANGCHAIN_PROJECT"] = "human_in_the_loop_generation"
+# os.environ["LANGCHAIN_TRACING_V2"] = "true"
+# os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
+# os.environ["LANGCHAIN_PROJECT"] = "human_in_the_loop_generation"
+
+os.environ["LANGCHAIN_TRACING_V2"] = "false"
 
 from kios_bt.bt_stewardship import BehaviorTreeStewardship
 from kios_scene.scene_factory import SceneFactory

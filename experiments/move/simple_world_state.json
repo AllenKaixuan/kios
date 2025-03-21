@@ -1,0 +1,51 @@
+{
+    "objects": [
+      { "name": "robot_arm", "properties": ["is_empty"] },
+      { "name": "point_A", "properties": [] },
+      { "name": "point_B", "properties": [] },
+      { "name": "point_C", "properties": [] },
+      { "name": "home", "properties": [] }
+    ],
+    "constraints": [
+      {
+        "source": "robot_arm",
+        "name": "can_move_to",
+        "target": "point_A"
+      },
+      {
+        "source": "robot_arm",
+        "name": "can_move_to",
+        "target": "point_B"
+      },
+      {
+        "source": "robot_arm",
+        "name": "can_move_to",
+        "target": "point_C"
+      },
+      {
+        "source": "robot_arm",
+        "name": "can_move_to",
+        "target": "home"
+      }
+    ],
+    "relations": [
+      {
+        "source": "robot_arm",
+        "name": "at",
+        "target": "home"
+      }
+    ],
+    "actions": [
+      {
+        "name": "move_to",
+        "parameters": ["target"],
+        "preconditions": [
+          {"type": "constraint", "constraint": {"source": "robot_arm", "name": "can_move_to", "target": "target"}}
+        ],
+        "effects": [
+          {"type": "relation", "relation": {"source": "robot_arm", "name": "at", "target": "target"}, "operation": "add"},
+          {"type": "relation", "relation": {"source": "robot_arm", "name": "at", "target": "home"}, "operation": "remove"}
+        ]
+      }
+    ]
+  }

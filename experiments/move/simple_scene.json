@@ -1,0 +1,38 @@
+{
+    "name": "Simple Movement Scene",
+    "description": "A simple scene with points A, B, and C",
+    "objects": [
+      {
+        "id": "point_A",
+        "name": "Point A",
+        "type": "position",
+        "position": [0.2, 0.2, 0.1]
+      },
+      {
+        "id": "point_B",
+        "name": "Point B",
+        "type": "position",
+        "position": [0.4, 0.3, 0.1]
+      },
+      {
+        "id": "point_C",
+        "name": "Point C",
+        "type": "position",
+        "position": [0.6, 0.2, 0.1]
+      },
+      {
+        "id": "robot_arm",
+        "name": "Robot Arm",
+        "type": "robot",
+        "position": [0.1, 0.1, 0.2]
+      },
+      {
+        "id": "home",
+        "name": "Home Position",
+        "type": "position",
+        "position": [0.1, 0.1, 0.2]
+      }
+    ],
+    "reference_objects": [],
+    "tools": []
+}
